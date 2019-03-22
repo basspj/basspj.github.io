@@ -8,7 +8,6 @@ import Footer from "~/src/components/Footer";
 import BlogDescription from "~/src/components/BlogDescription";
 
 import { rhythm } from "~/src/utils/typography";
-import { convertBlogTagToEmoji } from "~/src/utils/helpers";
 
 const BlogIndex: React.SFC<BlogIndexProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
