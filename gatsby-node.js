@@ -4,7 +4,11 @@ const { createFilePath } = require("gatsby-source-filesystem");
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPost = path.resolve("./src/templates/BlogPostTemplate.tsx");
+  createPage({
+    path: "/",
+    component: path.resolve("./src/templates/BlogIndex.tsx")
+  });
+
   return graphql(
     `
       {
@@ -32,6 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
+    const blogPost = path.resolve("./src/templates/BlogPostTemplate.tsx");
 
     posts.forEach((post, index) => {
       const previous =
