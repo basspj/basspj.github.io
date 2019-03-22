@@ -5,7 +5,7 @@ import Bio from "~/src/components/Bio";
 import Layout from "~/src/components/Layout";
 import SEO from "~/src/components/SEO";
 import { rhythm, scale } from "~/src/utils/typography";
-import { BlogDescription } from "../components/BlogDescription";
+import { BlogDescription } from "~/src/components/BlogDescription";
 
 const BlogPostTemplate: React.SFC<BlogPostTemplateProps> = ({
   data,
