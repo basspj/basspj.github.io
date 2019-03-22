@@ -5,6 +5,7 @@ import Bio from "~/src/components/Bio";
 import Layout from "~/src/components/Layout";
 import SEO from "~/src/components/SEO";
 import Footer from "~/src/components/Footer";
+import BlogDescription from "~/src/components/BlogDescription";
 
 import { rhythm } from "~/src/utils/typography";
 import { convertBlogTagToEmoji } from "~/src/utils/helpers";
@@ -32,9 +33,7 @@ const BlogIndex: React.SFC<BlogIndexProps> = ({ data, location }) => {
               </Link>
             </h3>
             <small>
-              {frontmatter.date}
-              {` • ${node.timeToRead} min read`}
-              {` • ${convertBlogTagToEmoji(frontmatter.tag)}`}
+              <BlogDescription frontmatter={frontmatter} node={node} />
             </small>
             <p
               dangerouslySetInnerHTML={{

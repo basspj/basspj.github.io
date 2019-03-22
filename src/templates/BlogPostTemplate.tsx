@@ -5,7 +5,7 @@ import Bio from "~/src/components/Bio";
 import Layout from "~/src/components/Layout";
 import SEO from "~/src/components/SEO";
 import { rhythm, scale } from "~/src/utils/typography";
-import { convertBlogTagToEmoji } from "../utils/helpers";
+import { BlogDescription } from "../components/BlogDescription";
 
 const BlogPostTemplate: React.SFC<BlogPostTemplateProps> = ({
   data,
@@ -33,9 +33,7 @@ const BlogPostTemplate: React.SFC<BlogPostTemplateProps> = ({
           marginTop: rhythm(-1)
         }}
       >
-        {frontmatter.date}
-        {` • ${post.timeToRead} min read`}
-        {` • ${convertBlogTagToEmoji(frontmatter.tag)}`}
+        <BlogDescription frontmatter={frontmatter} node={post} />
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <hr
