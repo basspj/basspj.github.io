@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/camelcase": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off",
+    "import/no-unresolved": "off",
+    "no-use-before-define": "off",
+    "spaced-comment": "off"
+  },
+  "globals": {
+    "__PATH_PREFIX__": "readonly",
+    "graphql": false
+  }
+}
