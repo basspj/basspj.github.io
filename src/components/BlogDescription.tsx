@@ -3,18 +3,19 @@ import React from "react";
 import { convertBlogTagToEmoji } from "~/src/utils/helpers";
 
 export const BlogDescription: React.SFC<BlogDescriptionProps> = ({
-  frontmatter,
-  node
+  date,
+  timeToRead,
+  tag
 }) => (
   <React.Fragment>
-    {frontmatter.date},{` • ${node.timeToRead} min read`},
-    {` • ${convertBlogTagToEmoji(frontmatter.tag)}`}
+    {date},{` • ${timeToRead} min read`},{` • ${convertBlogTagToEmoji(tag)}`}
   </React.Fragment>
 );
 
 interface BlogDescriptionProps {
-  frontmatter: { date: string; tag: string };
-  node: { timeToRead: string };
+  date: string;
+  timeToRead: string;
+  tag: string;
 }
 
 export default BlogDescription;

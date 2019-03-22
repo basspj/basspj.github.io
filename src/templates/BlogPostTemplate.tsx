@@ -16,7 +16,7 @@ const BlogPostTemplate: React.SFC<BlogPostTemplateProps> = ({
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
 
-  const { frontmatter } = post;
+  const { frontmatter, timeToRead } = post;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -33,7 +33,11 @@ const BlogPostTemplate: React.SFC<BlogPostTemplateProps> = ({
           marginTop: rhythm(-1)
         }}
       >
-        <BlogDescription frontmatter={frontmatter} node={post} />
+        <BlogDescription
+          date={frontmatter.date}
+          tag={frontmatter.tag}
+          timeToRead={timeToRead}
+        />
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <hr

@@ -19,7 +19,7 @@ const BlogIndex: React.SFC<BlogIndexProps> = ({ data, location }) => {
       <SEO keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Bio />
       {posts.map(({ node }) => {
-        const { frontmatter } = node;
+        const { frontmatter, timeToRead } = node;
         const title = frontmatter.title || node.fields.slug;
         return (
           <div key={node.fields.slug}>
@@ -33,7 +33,11 @@ const BlogIndex: React.SFC<BlogIndexProps> = ({ data, location }) => {
               </Link>
             </h3>
             <small>
-              <BlogDescription frontmatter={frontmatter} node={node} />
+              <BlogDescription
+                date={frontmatter.date}
+                tag={frontmatter.tag}
+                timeToRead={timeToRead}
+              />
             </small>
             <p
               dangerouslySetInnerHTML={{
