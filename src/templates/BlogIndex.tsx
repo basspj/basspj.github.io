@@ -7,11 +7,7 @@ import SEO from "~/src/components/SEO";
 import Footer from "~/src/components/Footer";
 import BlogIndexPosts from "~/src/components/BlogIndexPosts";
 
-const BlogIndex: React.SFC<BlogIndexProps> = ({
-  data,
-  location,
-  pageContext
-}) => {
+const BlogIndex: React.SFC<BlogIndexProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
