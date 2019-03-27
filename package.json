@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
-    "prebuild": "shx cp README.md public",
+    "prebuild": "shx mkdir -p public/static && shx cp README.md public",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
