@@ -27,14 +27,16 @@ const SEO: React.SFC<ISEOProps> = ({
 
   const metaDescription = description || site.siteMetadata.description;
   const author = site.siteMetadata.author;
-  const props: HelmetProps = title
-    ? {
-        title,
-        titleTemplate: `%s | ${site.siteMetadata.title}`
-      }
-    : {
-        title: site.siteMetadata.title
-      };
+
+  let props: HelmetProps = {};
+
+  if (title) {
+    props.titleTemplate = `%s | ${site.siteMetadata.title}`;
+  } else {
+    title = site.siteMetadata.title;
+  }
+
+  props.title = title;
 
   return (
     <Helmet
