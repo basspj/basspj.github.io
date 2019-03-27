@@ -19,6 +19,7 @@ const SEO: React.SFC<ISEOProps> = ({
             author {
               name
             }
+            googleSiteVerification
           }
         }
       }
