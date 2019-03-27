@@ -7,7 +7,9 @@ module.exports = {
       name: "basspj",
       description: "Do or do not, there is no try. - Yoda",
       social: {
-        twitter: "basspj"
+        twitter: "basspj",
+        github: "basspj",
+        medium: "@bass.pj"
       }
     }
   },

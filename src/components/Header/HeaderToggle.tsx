@@ -2,42 +2,12 @@ import React from "react";
 
 import sun from "~/content/assets/sun.png";
 import moon from "~/content/assets/moon.png";
+import ThemeContext from "~/src/context/ThemeContext";
 
 import Toggle from "../Toggle";
 
-export default class HeaderToggle extends React.PureComponent<
-  {},
-  HeaderToggleState
-> {
-  state = {
-    theme: undefined
-  };
-
-  componentDidMount() {
-    this.setState({ theme: window.__theme });
-    window.__onThemeChange = () => {
-      this.setState({ theme: window.__theme });
-    };
-  }
-
-  render() {
-    const { theme } = this.state;
-    return (
-      <Toggle
-        style={{ height: 36 }}
-        icons={{
-          checked: this.renderImage(moon),
-          unchecked: this.renderImage(sun)
-        }}
-        checked={theme === "light"}
-        onChange={() =>
-          window.__setPreferredTheme(theme === "light" ? "dark" : "light")
-        }
-      />
-    );
-  }
-
-  renderImage = (src) => {
+export const HeaderToggle: React.SFC<{}> = () => {
+  const renderImage = (src) => {
     return (
       <img
         src={src}
@@ -52,8 +22,24 @@ export default class HeaderToggle extends React.PureComponent<
       />
     );
   };
-}
 
-interface HeaderToggleState {
-  theme?: "dark" | "light";
-}
+  return (
+    <ThemeContext.Consumer>
+      {(consumer) => (
+        <Toggle
+          style={{ height: 36 }}
+          icons={{
+            checked: renderImage(sun),
+            unchecked: renderImage(moon)
+          }}
+          checked={consumer.dark}
+          onChange={() => {
+            consumer.toggle();
+          }}
+        />
+      )}
+    </ThemeContext.Consumer>
+  );
+};
+
+export default HeaderToggle;

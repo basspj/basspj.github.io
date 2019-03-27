@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Toggle: React.SFC<ToggleProps> = ({
+export const Toggle: React.SFC<IToggleProps> = ({
   checked,
   icons,
   onChange,
@@ -22,7 +22,7 @@ export const Toggle: React.SFC<ToggleProps> = ({
   );
 };
 
-interface ToggleProps {
+interface IToggleProps {
   checked: boolean;
   icons: { checked: any; unchecked: any };
   onChange: any;

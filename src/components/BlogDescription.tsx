@@ -2,7 +2,7 @@ import React from "react";
 
 import { convertBlogTagToEmoji } from "~/src/utils/helpers";
 
-export const BlogDescription: React.SFC<BlogDescriptionProps> = ({
+export const BlogDescription: React.SFC<IBlogDescriptionProps> = ({
   date,
   timeToRead,
   tag
@@ -12,7 +12,7 @@ export const BlogDescription: React.SFC<BlogDescriptionProps> = ({
   </React.Fragment>
 );
 
-interface BlogDescriptionProps {
+interface IBlogDescriptionProps {
   date: string;
   timeToRead: string;
   tag: string;

@@ -1,9 +1,7 @@
 declare var __PATH_PREFIX__;
 
 interface Window {
-  __theme: any;
-  __onThemeChange: any;
-  __setPreferredTheme: any;
+  __setTheme: any;
 }
 
 declare module "*.jpg" {
