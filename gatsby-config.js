@@ -11,7 +11,8 @@ module.exports = {
         github: "basspj",
         medium: "@bass.pj"
       }
-    }
+    },
+    googleSiteVerification: "loR0wJ1_-jnlVib8Ja8hesSoCYPMWBNo4hX_ccCSE4M"
   },
   plugins: [
     {

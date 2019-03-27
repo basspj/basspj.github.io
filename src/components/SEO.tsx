@@ -27,6 +27,7 @@ const SEO: React.SFC<ISEOProps> = ({
 
   const metaDescription = description || site.siteMetadata.description;
   const author = site.siteMetadata.author;
+  const googleSiteVerification = site.siteMetadata.googleSiteVerification;
 
   let props: HelmetProps = {};
 
@@ -76,6 +77,10 @@ const SEO: React.SFC<ISEOProps> = ({
         {
           name: `twitter:description`,
           content: metaDescription
+        },
+        {
+          name: `google-site-verification`,
+          content: googleSiteVerification
         }
       ]
         .concat(
