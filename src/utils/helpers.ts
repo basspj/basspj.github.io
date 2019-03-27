@@ -8,3 +8,8 @@ export const convertBlogTagToEmoji = (tag: string) => {
 
   return "*️⃣";
 };
+
+export const isResponseJson = (res: Response) => {
+  const contentType = res.headers.get("content-type");
+  return contentType && contentType.indexOf("application/json") > -1;
+};

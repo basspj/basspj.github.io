@@ -8,6 +8,7 @@ import Footer from "~/src/components/Footer";
 import BlogIndexPosts from "~/src/components/BlogIndexPosts";
 import { LocationProvider } from "~/src/context/LocationContext";
 import { pathJsonIndex } from "~/src/utils/path";
+import { isResponseJson } from "~/src/utils/helpers";
 
 const BlogIndex: React.SFC<IBlogIndexProps> = ({ location, pageContext }) => {
   const defaultPage = 2;
@@ -20,45 +21,39 @@ const BlogIndex: React.SFC<IBlogIndexProps> = ({ location, pageContext }) => {
   const [posts, setPosts] = useState(firstPosts);
 
   const fetchData = () => {
-    fetch(pathJsonIndex(page))
-      .then((res) => res.json())
-      .then(
-        (newPosts) => {
-          setPosts((prevPost) => {
-            for (let post of newPosts) prevPost.push(post);
-            return prevPost;
+    fetch(pathJsonIndex(page)).then((res) => {
+      if (res.ok) {
+        if (isResponseJson(res)) {
+          res.json().then((newPosts) => {
+            setPosts((prevPost) => {
+              for (let post of newPosts) prevPost.push(post);
+              return prevPost;
+            });
+            setPage((prevPage) => prevPage + 1);
           });
-          setPage((prevPage) => prevPage + 1);
-        },
-        (reason) => {
-          console.log(reason);
-
-          if (
-            `${reason}`.indexOf("SyntaxError: Unexpected token < in JSON") > -1
-          ) {
-            setKey("refresh");
-            setMore(false);
-          }
+        } else {
+          setKey("refresh");
+          setMore(false);
         }
-      );
+      }
+    });
   };
 
   const refresh = () => {
-    fetch(pathJsonIndex())
-      .then((res) => res.json())
-      .then(
-        (newPosts) => {
-          setPosts((_) => {
-            return newPosts;
+    fetch(pathJsonIndex()).then((res) => {
+      if (res.ok) {
+        if (isResponseJson(res)) {
+          res.json().then((newPosts) => {
+            setPosts((_) => {
+              return newPosts;
+            });
+            setPage((_) => defaultPage);
+            setKey("fetch");
+            setMore(true);
           });
-          setPage((_) => defaultPage);
-          setKey("fetch");
-          setMore(true);
-        },
-        (reason) => {
-          console.log(reason);
         }
-      );
+      }
+    });
   };
 
   return (
