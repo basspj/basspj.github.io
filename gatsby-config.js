@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "basspj.blog",
-    description: "basspj.blog",
+    description: "basspj blog with life and code",
     siteUrl: "https://basspj.github.io/",
     author: {
       name: "basspj",
